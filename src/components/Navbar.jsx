@@ -1,9 +1,9 @@
 import React from "react";
-import logo from "../assets/react.svg";
+// import logo from "../assets/react.svg";
 
 const Navbar = () => {
   return (
-    <div className=" p-10 flex justify-evenly item-center bg-black text-white position-fixed">
+    <div className=" p-10 flex justify-evenly item-center bg-black text-white ">
       <div>
         <h2 className=" font-semibold text-lg hover:cursor-pointer">Abhishek madoliya  </h2>
       </div>
