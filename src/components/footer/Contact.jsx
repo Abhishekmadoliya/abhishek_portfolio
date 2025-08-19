@@ -16,17 +16,22 @@ export default function Contact() {
         >
           <h2 className="text-3xl font-bold text-white mb-6">Contact Me</h2>
           <p className="mb-6 text-gray-400">
-            Have a project idea or just want to say hi? Drop me a message below!
+            Have a project in mind or an opportunity you'd like to discuss? 
+            Feel free to reach out! I'm always open to new challenges and collaborations. 
+            You can contact me via email at <span className="font-semibold text-indigo-200">abhishekmadoliya@gmail.com</span> or connect with me on <a href="https://www.linkedin.com/in/abhishek-madoliya-540847273/" className =" font-semibold text-indigo-200" target="_blank" rel="noopener noreferrer">LinkedIn</a>. 
+            Let's make something great together!
+
+
           </p>
 
           <ul className="space-y-4">
             <li className="flex items-center gap-3">
               <Mail className="w-5 h-5 text-indigo-400" />
-              <span>yourname@email.com</span>
+              <span>abhishekmadoliya@gmail.com</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-indigo-400" />
-              <span>+91 98765 43210</span>
+              <span>+91 9310069214</span>
             </li>
             <li className="flex items-center gap-3">
               <MapPin className="w-5 h-5 text-indigo-400" />
@@ -36,15 +41,13 @@ export default function Contact() {
 
           {/* Social Links */}
           <div className="flex gap-5 mt-6">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+            <a href="https://github.com/Abhishekmadoliya" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
               <Github size={22} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+            <a href="https://www.linkedin.com/in/abhishek-madoliya-540847273/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
               <Linkedin size={22} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-              <Twitter size={22} />
-            </a>
+            
           </div>
         </motion.div>
 

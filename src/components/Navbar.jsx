@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 w-full bg-[#1C2635] backdrop-blur-md text-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <h2 className="text-2xl font-bold hover:cursor-pointer bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] bg-clip-text text-transparent">

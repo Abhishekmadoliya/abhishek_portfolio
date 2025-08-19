@@ -1,33 +1,42 @@
 import React from "react";
 import { motion } from "framer-motion";
+import fileshareimg from "../assets/14-Best-File-Sharing-Apps-for-Bu.jpg"; // replace with actual image path
+import ecoming from "../assets/84_ecommerce.webp"
 
 const projects = [
   {
-    title: "Airbnb Clone",
-    description: "A full-stack clone built with Node.js, Express, and EJS with booking functionality.",
-    tech: ["Node.js", "Express", "MongoDB"],
-    link: "#",
-    image: "https://via.placeholder.com/400x250" // replace with real screenshot
+    title: "Property Reservation System",
+    description: "A full-stack application for managing property bookings and reservations.",
+    tech: ["MERN", "Node.js", "Express", "MongoDB", "React", "Tailwind", "cloudinary"],
+    link: "https://property-reservation-system.vercel.app/",
+    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/Property-Management-System.webp" // replace with real screenshot
   },
   {
-    title: "Weather App",
-    description: "Weather forecast app using OpenWeather API with real-time updates.",
-    tech: ["React", "Tailwind", "API"],
-    link: "#",
-    image: "https://via.placeholder.com/400x250"
+    title: "File Sharing Application",
+    description: "A file sharing application with real-time collaboration features.",
+    tech: ["MERN", "React", "Tailwind", "Node.js", "cloudinary", "MongoDB", "Express.js"],
+    link: "https://file-sharing-cyan.vercel.app/",
+    image: fileshareimg
   },
   {
-    title: "File Sharing App",
-    description: "A LimeWire-inspired MERN stack app with file preview & media streaming.",
-    tech: ["MERN", "Socket.io"],
-    link: "#",
-    image: "https://via.placeholder.com/400x250"
+    title: "Ecommerce Platform",
+    description: "An e-commerce platform with user authentication, product management, and payment integration.",
+    tech: ["MERN", "Node.js","React.js","Tailwind","cloudinary", "Redux","MongoDB","Express.js"],
+    link: "https://ecommerce-mern-6o4x.vercel.app/",
+    image: ecoming
+  },
+   {
+    title: "Blog Application",
+    description: "A blog application with user authentication, post management, and comments.",
+    tech: ["MERN", "Node.js","React.js","Tailwind","cloudinary", "Redux","MongoDB","Express.js"],
+    link: "https://blog-application-mern-ma2s.vercel.app/",
+    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/blog-image.png"
   }
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-16 bg-gray-50 dark:bg-[#38343C]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <motion.h2

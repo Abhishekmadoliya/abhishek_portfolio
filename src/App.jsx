@@ -13,11 +13,7 @@ const App = () => {
       <Hero />
       <Projects />
       <Contact />
-      <Routes>
-        
-        <Route path="/" element={<ProjectDashboard />} />
-        
-      </Routes>
+      
       {/* Other components can be added here */}
     </div>
   )

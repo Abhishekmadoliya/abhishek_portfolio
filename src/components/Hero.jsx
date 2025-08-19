@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/react.svg";
+import logo from "../assets/profile.jpeg";
 
 const Hero = () => {
   return (
@@ -11,7 +11,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-[120px] md:w-[180px] lg:w-[220px] animate-bounce-slow"
+        className="w-[120px] md:w-[180px] lg:w-[220px] animate-bounce-slow rounded-full shadow-lg cover "
         src={logo}
         alt="Welcome to My Portfolio"
       />
