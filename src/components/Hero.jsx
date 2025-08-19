@@ -1,13 +1,6 @@
 import React from "react";
 import logo from "../assets/react.svg";
-import skills from "../assets/image.png"; // Assuming you have a skills image
-import reactimg from "../assets/React.webp"; // Assuming you have a react logo
-// import reactimg from "../assets/React.webp"; // Assuming you have a react logo
-import nodeimg from "../assets/1174925.webp"; // Assuming you have a node.js logo
-import mongodbimg from "../assets/mongodb-logo.webp";
-import javascriptimg from "../assets/JavaScript-logo.png"; // Assuming you have a javascript logo
-import sqllogo from "../assets/sql.webp"; // Assuming you have a SQL logo
-import expresslogo from "../assets/express.png"; // Assuming you have an Express.js logo
+
 
 const Hero = () => {
   return (
@@ -101,6 +94,9 @@ const Hero = () => {
     </section>
   );
 };
-   
+//       </div>
+//     </section>
+//   );
+// };
 
 export default Hero;
