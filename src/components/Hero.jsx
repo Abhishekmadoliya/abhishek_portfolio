@@ -1,102 +1,109 @@
 import React from "react";
+import { motion } from "framer-motion";
 import logo from "../assets/react.svg";
-
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-[#39353D] text-white gap-4 p-6 md:p-20">
-      <img 
-        className="w-[150px] md:w-[200px] animate-float" 
-        src={logo} 
-        alt="Welcome to My Portfolio" 
+    <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#2C2A34] via-[#39353D] to-[#1F1C22] text-white gap-8 px-6 md:px-20 pt-28 pb-5">
+      
+      {/* Logo */}
+      <motion.img
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="w-[120px] md:w-[180px] lg:w-[220px] animate-bounce-slow"
+        src={logo}
+        alt="Welcome to My Portfolio"
       />
-      <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center">
-        Hi, I am <br /> Abhishek Madoliya A <br />
-        passionate <span className="text-[#C94CA6] animate-pulse">Full-Stack-Developer</span>
-      </h1>
 
-      <p className="text-gray-400 mt-2 max-w-[600px] text-center px-4 md:px-0">
+      {/* Title */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        className="text-3xl md:text-5xl font-bold mt-4 text-center leading-snug"
+      >
+        Hi, I am <br />
+        <span className="text-[#C94CA6]">Abhishek Madoliya</span> <br />
+        a passionate{" "}
+        <span className="bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] bg-clip-text text-transparent animate-pulse">
+          Full-Stack Developer
+        </span>
+      </motion.h1>
+
+      {/* Description */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 1 }}
+        className="text-gray-300 mt-4 max-w-2xl text-center text-sm md:text-base lg:text-lg leading-relaxed"
+      >
         I am a passionate Full Stack Developer specializing in the MERN stack
-        (MongoDB, Express.js, React, Node.js), eager to apply my skills in a
-        professional setting. As a fresher, I am actively seeking internship
-        opportunities to gain hands-on experience and contribute to real-world
-        projects. I am driven by a strong desire to learn, grow, and collaborate
-        with industry professionals. My enthusiasm for coding and
-        problem-solving, combined with my academic knowledge, makes me a quick
-        learner and a dedicated team player. Let's work together to build
-        innovative solutions!
-      </p>
+        (MongoDB, Express.js, React, Node.js). As a fresher, I’m eager to gain
+        hands-on experience and contribute to real-world projects. My enthusiasm
+        for coding, problem-solving, and collaboration makes me a quick learner
+        and a dedicated team player. Let’s build innovative solutions together!
+      </motion.p>
 
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-        <a 
-          href="mailto:your.email@example.com" 
-          className="bg-[#C94CA6] text-white px-6 py-2 rounded-md hover:bg-[#A83B8F] transition duration-300 text-center"
-          aria-label="Contact Me via Email"
+      {/* Buttons */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6"
+      >
+        <a
+          href="mailto:your.email@example.com"
+          className="px-6 py-3 rounded-md bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] text-white font-medium shadow-md hover:opacity-90 transition duration-300 text-center"
         >
           Contact Me
         </a>
-        <a 
-          href="/path-to-your-resume.pdf" 
-          className="bg-[#39353D] text-white px-6 py-2 rounded-md border border-[#C94CA6] hover:bg-[#C94CA6] hover:text-white transition duration-300 text-center"
-          aria-label="Download Resume"
+        <a
+          href="/path-to-your-resume.pdf"
           download
+          className="px-6 py-3 rounded-md border border-[#C94CA6] text-[#C94CA6] hover:bg-[#C94CA6] hover:text-white font-medium transition duration-300 text-center"
         >
           Download Resume
         </a>
-      </div>
-      <div className="mt-10 flex flex-col items-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#BFBFBF] mb-8">Tech Stack</h2>
-        <div className="bg-[#2A2A2A] rounded-xl p-8 shadow-2xl">
-          <ul className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="w-8 h-8 brightness-200" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-8 h-8" />
-              </div>
-            </li>
-            <li className="group">
-              <div className="w-14 h-14 bg-[#333333] rounded-lg flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-[#414141]">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" className="w-8 h-8" />
-              </div>
-            </li>
+      </motion.div>
+
+      {/* Tech Stack */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="mt-14 flex flex-col items-center"
+      >
+        <h2 className="text-2xl md:text-4xl font-bold text-[#BFBFBF] mb-8">
+          🚀 Tech Stack
+        </h2>
+        <div className="bg-[#2A2A2A] rounded-2xl p-8 shadow-2xl">
+          <ul className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+            {[
+              { src: "javascript/javascript-original.svg", alt: "JavaScript" },
+              { src: "react/react-original.svg", alt: "React" },
+              { src: "html5/html5-original.svg", alt: "HTML5" },
+              { src: "nodejs/nodejs-original.svg", alt: "Node.js" },
+              { src: "css3/css3-original.svg", alt: "CSS3" },
+              { src: "express/express-original.svg", alt: "Express.js" },
+              { src: "mongodb/mongodb-original.svg", alt: "MongoDB" },
+              { src: "mysql/mysql-original.svg", alt: "MySQL" },
+            ].map((tech, i) => (
+              <li key={i} className="group">
+                <div className="w-14 h-14 bg-[#333333] rounded-xl flex items-center justify-center transform hover:scale-110 transition duration-300 hover:bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD]">
+                  <img
+                    src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.src}`}
+                    alt={tech.alt}
+                    className="w-8 h-8 filter drop-shadow-md"
+                  />
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
-//       </div>
-//     </section>
-//   );
-// };
 
 export default Hero;
