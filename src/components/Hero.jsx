@@ -1,7 +1,7 @@
 import {forwardRef} from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/profile.jpeg";
-import pdf from "../assets/Abhishek_Madoliya_Resume.pdf";
+// import pdf from "../assets/Abhishek_Madoliya_Resume.pdf";
 import Contact from "./footer/Contact";
 
 
@@ -65,7 +65,7 @@ const Hero = forwardRef((props, ref) => {
           Contact Me
         </a>
         <a
-          href={pdf}
+          href="https://docs.google.com/document/d/1sh3prDiykcmYL0LLwXZNYbQcyoXgKeHi2umn5qfGJsA/edit?usp=sharing"
           download
           className="px-6 py-3 rounded-md border border-[#C94CA6] text-[#C94CA6] hover:bg-[#C94CA6] hover:text-white font-medium transition duration-300 text-center"
         >
