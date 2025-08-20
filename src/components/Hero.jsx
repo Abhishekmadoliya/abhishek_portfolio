@@ -1,11 +1,16 @@
-import React from "react";
+import {forwardRef} from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/profile.jpeg";
+import pdf from "../assets/Abhishek_Madoliya_Resume.pdf";
+import Contact from "./footer/Contact";
 
-const Hero = () => {
+
+
+
+const Hero = forwardRef((props, ref) => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#2C2A34] via-[#39353D] to-[#1F1C22] text-white gap-8 px-6 md:px-20 pt-28 pb-5">
-      
+    <section ref={ref} className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#2C2A34] via-[#39353D] to-[#1F1C22] text-white gap-8 px-6 md:px-20 pt-28 pb-5">
+
       {/* Logo */}
       <motion.img
         initial={{ opacity: 0, y: -40 }}
@@ -55,11 +60,12 @@ const Hero = () => {
         <a
           href="mailto:your.email@example.com"
           className="px-6 py-3 rounded-md bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] text-white font-medium shadow-md hover:opacity-90 transition duration-300 text-center"
+          onClick={props.onClickContact}
         >
           Contact Me
         </a>
         <a
-          href="/path-to-your-resume.pdf"
+          href={pdf}
           download
           className="px-6 py-3 rounded-md border border-[#C94CA6] text-[#C94CA6] hover:bg-[#C94CA6] hover:text-white font-medium transition duration-300 text-center"
         >
@@ -104,6 +110,6 @@ const Hero = () => {
       </motion.div>
     </section>
   );
-};
+});
 
 export default Hero;

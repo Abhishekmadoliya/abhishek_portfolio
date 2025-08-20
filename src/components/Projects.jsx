@@ -1,7 +1,9 @@
-import React from "react";
+import {forwardRef} from "react";
 import { motion } from "framer-motion";
 import fileshareimg from "../assets/14-Best-File-Sharing-Apps-for-Bu.jpg"; // replace with actual image path
 import ecoming from "../assets/84_ecommerce.webp"
+
+
 
 const projects = [
   {
@@ -34,9 +36,9 @@ const projects = [
   }
 ];
 
-export default function Projects() {
+const Projects = forwardRef((props, ref) => {
   return (
-    <section id="projects" className="py-16 bg-gray-50 dark:bg-[#38343C]">
+    <section id="projects" className="py-16 bg-gray-50 dark:bg-[#38343C]" ref={ref}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Heading */}
         <motion.h2
@@ -107,4 +109,6 @@ export default function Projects() {
       </div>
     </section>
   );
-}
+});
+
+export default Projects;

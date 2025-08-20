@@ -1,10 +1,10 @@
-import React from "react";
+import {forwardRef} from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
 
-export default function Contact() {
+const Contact = forwardRef((props, ref) => {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-300">
+    <footer ref={ref} className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-300">
       {/* Contact Section */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
         
@@ -52,7 +52,7 @@ export default function Contact() {
         </motion.div>
 
         {/* Right Side - Contact Form */}
-        <motion.form
+        {/* <motion.form
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
@@ -78,11 +78,12 @@ export default function Contact() {
             <button
               type="submit"
               className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white font-medium"
+            
             >
               Send Message
             </button>
           </div>
-        </motion.form>
+        </motion.form> */}
       </div>
 
       {/* Footer Bottom */}
@@ -91,4 +92,7 @@ export default function Contact() {
       </div>
     </footer>
   );
-}
+});
+
+
+export default Contact;

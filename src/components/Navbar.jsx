@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react"; // icons
 
-const Navbar = () => {
+const Navbar = ({ onClick,onClickAbout,onClickContact }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-[#1C2635] backdrop-blur-md text-white shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
-        <h2 className="text-2xl font-bold hover:cursor-pointer bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold hover:cursor-pointer bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] bg-clip-text text-transparent" >
           Abhishek Madoliya
         </h2>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-10 text-gray-300 font-medium">
           {["Projects", "About", "Contact"].map((item, i) => (
-            <li key={i} className="relative group cursor-pointer">
+            <li key={i} className="relative group cursor-pointer" onClick={() => {
+              if(item === "Projects"){
+                onClick();
+              }else if(item == "Contact"){
+                onClickContact();
+              }else if(item === "About"){
+                onClickAbout();
+              }
+            }}>
               {item}
+
               <span className="absolute left-0 bottom-[-6px] w-0 h-[2px] bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] transition-all group-hover:w-full"></span>
             </li>
           ))}
