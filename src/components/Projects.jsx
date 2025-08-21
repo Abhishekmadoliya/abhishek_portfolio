@@ -2,7 +2,8 @@ import {forwardRef} from "react";
 import { motion } from "framer-motion";
 import fileshareimg from "../assets/14-Best-File-Sharing-Apps-for-Bu.jpg"; // replace with actual image path
 import ecoming from "../assets/84_ecommerce.webp"
-
+import re_pdf from "../assets/pdfresearch.jpeg"; // replace with actual image path
+import { Github } from "lucide-react";
 
 
 const projects = [
@@ -11,28 +12,40 @@ const projects = [
     description: "A full-stack application for managing property bookings and reservations.",
     tech: ["MERN", "Node.js", "Express", "MongoDB", "React", "Tailwind", "cloudinary"],
     link: "https://property-reservation-system.vercel.app/",
-    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/Property-Management-System.webp" // replace with real screenshot
+    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/Property-Management-System.webp" ,// replace with real screenshot,
+    github: "https://github.com/Abhishekmadoliya/property-reservation-system"
   },
   {
     title: "File Sharing Application",
     description: "A file sharing application with real-time collaboration features.",
     tech: ["MERN", "React", "Tailwind", "Node.js", "cloudinary", "MongoDB", "Express.js"],
     link: "https://file-sharing-cyan.vercel.app/",
-    image: fileshareimg
+    image: fileshareimg,
+    github: "https://github.com/Abhishekmadoliya/file-sharing"
   },
   {
     title: "Ecommerce Platform",
     description: "An e-commerce platform with user authentication, product management, and payment integration.",
     tech: ["MERN", "Node.js","React.js","Tailwind","cloudinary", "Redux","MongoDB","Express.js"],
     link: "https://ecommerce-mern-6o4x.vercel.app/",
-    image: ecoming
+    image: ecoming,
+    github:"https://github.com/Abhishekmadoliya/ecommerce-mern"
   },
    {
     title: "Blog Application",
     description: "A blog application with user authentication, post management, and comments.",
     tech: ["MERN", "Node.js","React.js","Tailwind","cloudinary", "Redux","MongoDB","Express.js"],
     link: "https://blog-application-mern-ma2s.vercel.app/",
-    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/blog-image.png"
+    image: "https://abhishekmadoliya.github.io/Abhishek-Madoliya-Personal-Portfoilio/assets/blog-image.png",
+    github:"https://github.com/Abhishekmadoliya/BLOG-APPLICATION-MERN-"
+  },
+  {
+    title: "Multi-PDF Research App: AI-Powered Document Search",
+    description: "An AI-powered research tool that enables users to search across multiple PDF documents efficiently.",
+    tech: ["Next.js", "Node.js","Tailwind","Langchain", "Docker","MongoDB","Express.js"],
+    link: "#",
+    image: re_pdf,
+    github:"https://github.com/Abhishekmadoliya/multi-pdf-research"
   }
 ];
 
@@ -94,7 +107,9 @@ const Projects = forwardRef((props, ref) => {
                 </div>
 
                 {/* Link */}
-                <a
+                <div className="flex gap-2 items-center mt-4">
+                  <div>
+                     <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -102,6 +117,18 @@ const Projects = forwardRef((props, ref) => {
                 >
                   View Project
                 </a>
+                  </div>
+
+                  <div>
+                    <a href={project.github}
+                                      className="inline-block px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors"
+
+                    >Github</a>
+                  </div>
+                 
+                </div>
+                
+                
               </div>
             </motion.div>
           ))}

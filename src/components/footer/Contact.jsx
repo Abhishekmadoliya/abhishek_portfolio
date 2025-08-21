@@ -88,7 +88,7 @@ const Contact = forwardRef((props, ref) => {
 
       {/* Footer Bottom */}
       <div className="border-t border-gray-700 py-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Your Name. All Rights Reserved.
+        © {new Date().getFullYear()} Abhishek madoliya. All Rights Reserved.
       </div>
     </footer>
   );
