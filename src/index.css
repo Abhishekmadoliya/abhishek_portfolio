@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Float animation for decorative elements */
 @keyframes float {
   0% {
     transform: translateY(0px);

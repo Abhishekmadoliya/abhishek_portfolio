@@ -1,61 +1,175 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react"; // icons
+import { Menu, X } from "lucide-react";
 
-const Navbar = ({ onClick,onClickAbout,onClickContact }) => {
+const Navbar = ({ onClick, onClickAbout, onClickContact }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // All nav items in exact order matching reference: Works About [LOGO] Gallery Resume↗
+  // Adapted: Projects About [AM] Contact Resume↗
+  const allItems = [
+    { label: "Projects", action: onClick, position: "left" },
+    { label: "About", action: onClickAbout, position: "left" },
+    { label: "Contact", action: onClickContact, position: "right" },
+    {
+      label: "Resume",
+      action: () =>
+        window.open(
+          "https://docs.google.com/document/d/1sh3prDiykcmYL0LLwXZNYbQcyoXgKeHi2umn5qfGJsA/edit?usp=sharing",
+          "_blank"
+        ),
+      position: "right",
+      hasArrow: true,
+    },
+  ];
+
+  const leftItems = allItems.filter((i) => i.position === "left");
+  const rightItems = allItems.filter((i) => i.position === "right");
+
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#1C2635] backdrop-blur-md text-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <h2 className="text-2xl font-bold hover:cursor-pointer bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] bg-clip-text text-transparent" >
-          Abhishek Madoliya
-        </h2>
+    <nav
+      className="fixed top-0 left-0 w-full z-50"
+      style={{ backgroundColor: "#f5f0e8" }}
+    >
+      {/* Desktop Nav — single centered row */}
+      <div className="hidden md:flex items-center justify-center py-6 gap-16 lg:gap-24">
+        {/* Left links */}
+        {leftItems.map((item, i) => (
+          <span
+            key={`l-${i}`}
+            onClick={item.action}
+            className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a]"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "15px",
+              fontWeight: 400,
+              color: "#4a4a4a",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {item.label}
+          </span>
+        ))}
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-10 text-gray-300 font-medium">
-          {["Projects", "About", "Contact"].map((item, i) => (
-            <li key={i} className="relative group cursor-pointer" onClick={() => {
-              if(item === "Projects"){
-                onClick();
-              }else if(item == "Contact"){
-                onClickContact();
-              }else if(item === "About"){
-                onClickAbout();
-              }
-            }}>
-              {item}
+        {/* Center Logo: A (dark) M (orange) — matching JD style */}
+        <span
+          onClick={onClickAbout}
+          className="cursor-pointer select-none"
+          style={{ lineHeight: 1 }}
+        >
+          <span
+            style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "28px",
+              fontWeight: 400,
+              color: "#1a1a1a",
+              fontStyle: "italic",
+            }}
+          >
+            ABHISHEK
+          </span>
+          <span
+            style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "28px",
+              fontWeight: 400,
+              color: "#d4772c",
+              fontStyle: "italic",
+              marginLeft: "2px",
+            }}
+          >
+            MADOLIYA
+          </span>
+        </span>
 
-              <span className="absolute left-0 bottom-[-6px] w-0 h-[2px] bg-gradient-to-r from-[#C94CA6] to-[#6A5ACD] transition-all group-hover:w-full"></span>
-            </li>
-          ))}
-        </ul>
+        {/* Right links */}
+        {rightItems.map((item, i) => (
+          <span
+            key={`r-${i}`}
+            onClick={item.action}
+            className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a] inline-flex items-center"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: "15px",
+              fontWeight: 400,
+              color: "#4a4a4a",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {item.label}
+            {item.hasArrow && (
+              <span style={{ marginLeft: "4px", fontSize: "13px" }}>↗</span>
+            )}
+          </span>
+        ))}
+      </div>
 
-        {/* Mobile Menu Button */}
+      {/* Mobile Nav */}
+      <div className="md:hidden flex items-center justify-between px-6 py-5">
+        {/* Mobile Logo */}
+        <span className="select-none" onClick={onClickAbout}>
+          <span
+            style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "24px",
+              color: "#1a1a1a",
+              fontStyle: "italic",
+            }}
+          >
+            A
+          </span>
+          <span
+            style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "24px",
+              color: "#d4772c",
+              fontStyle: "italic",
+              marginLeft: "1px",
+            }}
+          >
+            M
+          </span>
+        </span>
+
         <button
-          className="md:hidden text-gray-300"
+          className="text-[#3a3a3a]"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-black/90 text-gray-300">
-          <ul className="flex flex-col items-center space-y-6 py-6 text-lg">
-            {["Projects", "About", "Contact"].map((item, i) => (
+      {/* Mobile Dropdown */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+        }`}
+        style={{ backgroundColor: "#f5f0e8" }}
+      >
+        <div className="border-t border-[#e0dbd1]">
+          <ul className="flex flex-col items-center gap-5 py-7">
+            {allItems.map((item, i) => (
               <li
                 key={i}
-                className="hover:text-white cursor-pointer transition"
-                onClick={() => setIsOpen(false)}
+                className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a]"
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: "16px",
+                  color: "#4a4a4a",
+                }}
+                onClick={() => {
+                  setIsOpen(false);
+                  item.action?.();
+                }}
               >
-                {item}
+                {item.label}
+                {item.hasArrow && (
+                  <span style={{ marginLeft: "4px", fontSize: "13px" }}>↗</span>
+                )}
               </li>
             ))}
           </ul>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
 import Contact from './components/footer/Contact'
+import MiddleSpinner from './components/middle-spinner'
+import KindWords from './components/kind-words'
 
 import {Routes, Route} from 'react-router-dom'
 import ProjectDashboard from './components/admin/ProjectDashboard'
@@ -37,6 +39,8 @@ const App = () => {
       <Navbar onClick={scrolltoProject} onClickAbout={scrollToAbout} onClickContact={scrollToContact}   />
       <Hero ref={heroRef} onClickContact={scrollToContact} />
       <Projects ref={projectsRef} />
+      <MiddleSpinner />
+      <KindWords />
       <Contact ref={contactRef} />
 
       {/* Other components can be added here */}

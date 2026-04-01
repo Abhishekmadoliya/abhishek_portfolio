@@ -1,98 +1,106 @@
-import {forwardRef} from "react";
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowUpRight } from "lucide-react";
 
 const Contact = forwardRef((props, ref) => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer ref={ref} className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-300">
-      {/* Contact Section */}
-      <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12">
-        
-        {/* Left Side - Contact Info */}
+    <footer
+      ref={ref}
+      id="contact"
+      className="py-24 pt-32 relative overflow-hidden"
+      style={{ backgroundColor: "#f5f0e8" }}
+    >
+      <div className="max-w-[1100px] mx-auto px-6 text-center">
+        {/* Main Header */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-12"
         >
-          <h2 className="text-3xl font-bold text-white mb-6">Contact Me</h2>
-          <p className="mb-6 text-gray-400">
-            Have a project in mind or an opportunity you'd like to discuss? 
-            Feel free to reach out! I'm always open to new challenges and collaborations. 
-            You can contact me via email at <span className="font-semibold text-indigo-200">abhishekmadoliya@gmail.com</span> or connect with me on <a href="https://www.linkedin.com/in/abhishek-madoliya-540847273/" className =" font-semibold text-indigo-200" target="_blank" rel="noopener noreferrer">LinkedIn</a>. 
-            Let's make something great together!
-
-
-          </p>
-
-          <ul className="space-y-4">
-            <li className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-indigo-400" />
-              <span>abhishekmadoliya@gmail.com</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-indigo-400" />
-              <span>+91 9310069214</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <MapPin className="w-5 h-5 text-indigo-400" />
-              <span>New Delhi, India</span>
-            </li>
-          </ul>
-
-          {/* Social Links */}
-          <div className="flex gap-5 mt-6">
-            <a href="https://github.com/Abhishekmadoliya" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-              <Github size={22} />
-            </a>
-            <a href="https://www.linkedin.com/in/abhishek-madoliya-540847273/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-              <Linkedin size={22} />
-            </a>
-            
-          </div>
+          <h2
+            className="text-[3.5rem] md:text-[5.5rem] leading-[1.1] text-[#1a1a1a]"
+            style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400 }}
+          >
+            Let's work <br />
+            <span style={{ fontStyle: "italic", color: "#d4772c" }}>together.</span>
+          </h2>
         </motion.div>
 
-        {/* Right Side - Contact Form */}
-        {/* <motion.form
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="bg-gray-800 rounded-2xl shadow-lg p-6"
+        {/* Email CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-20"
         >
-          <h3 className="text-xl font-semibold text-white mb-4">Send me a message</h3>
-          <div className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows="4"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 transition rounded-lg text-white font-medium"
-            
-            >
-              Send Message
-            </button>
-          </div>
-        </motion.form> */}
-      </div>
+          <a
+            href="mailto:abhishekmadoliya@gmail.com"
+            className="group relative inline-flex items-center gap-4 text-2xl md:text-4xl font-medium text-[#1a1a1a] hover:text-[#d4772c] transition-colors duration-300"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            abhishekmadoliya@gmail.com
+            <span className="p-2 md:p-3 rounded-full border border-[#1a1a1a]/10 group-hover:border-[#d4772c]/40 group-hover:bg-[#d4772c]/5 transition-all">
+              <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </span>
+          </a>
+        </motion.div>
 
-      {/* Footer Bottom */}
-      <div className="border-t border-gray-700 py-6 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Abhishek madoliya. All Rights Reserved.
+        {/* Social Links Row */}
+        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mb-24">
+          {[
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/abhishek-madoliya-540847273/", icon: Linkedin },
+            { label: "GitHub", href: "https://github.com/Abhishekmadoliya", icon: Github },
+            { label: "Twitter", href: "#", icon: Twitter },
+          ].map((social, i) => (
+            <motion.a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="text-[#1a1a1a] hover:text-[#d4772c] text-sm font-semibold tracking-widest uppercase flex items-center gap-2 transition-colors border-b border-transparent hover:border-[#d4772c]/30 pb-1"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {social.label}
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Footer Bottom / Signature */}
+        <div className="pt-12 border-t border-[#1a1a1a]/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Logo Initial AM Signature style */}
+          <div className="flex items-center gap-2">
+            <span 
+              className="text-2xl italic font-normal"
+              style={{ fontFamily: "'DM Serif Display', serif" }}
+            >
+              <span className="text-[#1a1a1a]">A</span>
+              <span className="text-[#d4772c]">M</span>
+            </span>
+            <span className="text-[#1a1a1a]/40 text-[11px] font-medium tracking-widest uppercase">
+              Abhishek Madoliya
+            </span>
+          </div>
+
+          {/* Copyright notice */}
+          <div className="text-[#1a1a1a]/40 text-[11px] font-medium tracking-widest uppercase">
+            © {currentYear} All rights reserved.
+          </div>
+
+          {/* Location status like 'New Delhi' */}
+          <div className="flex items-center gap-2 text-[#1a1a1a]/60 text-[11px] font-semibold tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4772c] animate-pulse" />
+            New Delhi, India
+          </div>
+        </div>
       </div>
     </footer>
   );
 });
-
 
 export default Contact;
