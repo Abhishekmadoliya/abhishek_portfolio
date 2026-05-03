@@ -111,8 +111,8 @@ const Hero = forwardRef((props, ref) => {
 
                     {/* Footer label */}
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#1a1a1a] text-[#f5f0e8] px-5 py-2 rounded-full text-[11px] font-semibold shadow-lg border border-white/10 flex items-center gap-2">
-                       <span className="w-1.5 h-1.5 rounded-full bg-[#d4772c] animate-pulse" />
-                       Resume Preview
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4772c] animate-pulse" />
+                      Resume Preview
                     </div>
                   </div>
                 </div>
@@ -302,33 +302,7 @@ const Hero = forwardRef((props, ref) => {
         </div>
       </div>
 
-      {/* Bottom tech icons — very subtle, at the bottom of viewport */}
-      <motion.div
-        {...fadeIn(1.0)}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-6"
-        style={{ opacity: 0.3 }}
-      >
-        {[
-          { src: "javascript/javascript-original.svg", alt: "JavaScript" },
-          { src: "react/react-original.svg", alt: "React" },
-          { src: "nodejs/nodejs-original.svg", alt: "Node.js" },
-          { src: "mongodb/mongodb-original.svg", alt: "MongoDB" },
-          { src: "express/express-original.svg", alt: "Express.js" },
-        ].map((tech, i) => (
-          <img
-            key={i}
-            src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${tech.src}`}
-            alt={tech.alt}
-            className="transition-all duration-300 hover:opacity-100"
-            style={{
-              width: "22px",
-              height: "22px",
-              filter: "grayscale(100%)",
-            }}
-            title={tech.alt}
-          />
-        ))}
-      </motion.div>
+
     </section>
   );
 });

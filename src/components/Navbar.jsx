@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const Navbar = ({ onClick, onClickAbout, onClickContact }) => {
+const Navbar = ({ onClick, onClickAbout, onClickContact, onClickSkills, onClickExperience }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // All nav items in exact order matching reference: Works About [LOGO] Gallery Resume↗
   // Adapted: Projects About [AM] Contact Resume↗
   const allItems = [
     { label: "Projects", action: onClick, position: "left" },
-    { label: "About", action: onClickAbout, position: "left" },
+    { label: "Skills", action: onClickSkills, position: "left" },
+    { label: "Experience", action: onClickExperience, position: "left" },
+    { label: "About", action: onClickAbout, position: "right" },
     { label: "Contact", action: onClickContact, position: "right" },
     {
       label: "Resume",
@@ -140,9 +142,8 @@ const Navbar = ({ onClick, onClickAbout, onClickContact }) => {
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
+          }`}
         style={{ backgroundColor: "#f5f0e8" }}
       >
         <div className="border-t border-[#e0dbd1]">

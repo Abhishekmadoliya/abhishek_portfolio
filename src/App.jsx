@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
+import Skills from './components/Skills'
+import Experience from './components/Experience'
 import Contact from './components/footer/Contact'
 import MiddleSpinner from './components/middle-spinner'
 import KindWords from './components/kind-words'
@@ -21,6 +23,8 @@ const App = () => {
 
   const heroRef = useRef(null);
   const contactRef = useRef(null);
+  const skillsRef = useRef(null);
+  const experienceRef = useRef(null);
 
   const scrollToContact = () => {
     if (contactRef.current) {
@@ -34,11 +38,31 @@ const App = () => {
     }
   }
 
+  const scrollToSkills = () => {
+    if (skillsRef.current) {
+      skillsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  const scrollToExperience = () => {
+    if (experienceRef.current) {
+      experienceRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <div>
-      <Navbar onClick={scrolltoProject} onClickAbout={scrollToAbout} onClickContact={scrollToContact}   />
+      <Navbar 
+        onClick={scrolltoProject} 
+        onClickAbout={scrollToAbout} 
+        onClickContact={scrollToContact} 
+        onClickSkills={scrollToSkills} 
+        onClickExperience={scrollToExperience}
+      />
       <Hero ref={heroRef} onClickContact={scrollToContact} />
       <Projects ref={projectsRef} />
+      <Skills ref={skillsRef} />
+      <Experience ref={experienceRef} />
       <MiddleSpinner />
       <KindWords />
       <Contact ref={contactRef} />
