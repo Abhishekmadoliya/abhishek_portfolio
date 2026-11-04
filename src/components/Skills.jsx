@@ -19,50 +19,79 @@ import {
   Monitor,
   PenTool,
   Plus,
-  Cloud
+  Cloud,
+  Sparkles,
+  Bot,
+  Radio,
+  FileCode2,
+  Workflow,
+  Network,
 } from "lucide-react";
 
-/* ─────── Skill Data ─────── */
+/* ─────── Skill Data matching Resume ─────── */
 const skillCategories = [
+  {
+    id: "ai",
+    label: "AI & LLM Systems",
+    icon: Sparkles,
+    color: "#d4772c",
+    skills: [
+      { name: "LangChain", level: 92, icon: Bot },
+      { name: "OpenAI API", level: 95, icon: Sparkles },
+      { name: "RAG & Vector Search", level: 90, icon: Database },
+      { name: "Multi-Agent GD Systems", level: 88, icon: Network },
+      { name: "WebRTC Audio Pipeline", level: 85, icon: Radio },
+      { name: "Deepgram Nova-3 STT", level: 87, icon: Radio },
+      { name: "Prompt Engineering", level: 95, icon: FileCode2 },
+      { name: "Stable Diffusion / FLUX", level: 80, icon: Palette },
+    ],
+  },
   {
     id: "frontend",
     label: "Frontend",
     icon: Palette,
-    color: "#d4772c",
+    color: "#2563eb",
     skills: [
-      { name: "React", level: 90, icon: Atom },
-      { name: "Next.js", level: 80, icon: Zap },
-      { name: "JavaScript", level: 92, icon: Code },
-      { name: "TypeScript", level: 75, icon: Code },
-      { name: "HTML5", level: 95, icon: Layout },
-      { name: "CSS3", level: 90, icon: Layers },
-      { name: "Tailwind", level: 88, icon: Wind },
+      { name: "React.js", level: 95, icon: Atom },
+      { name: "Next.js (SSR / App Router)", level: 90, icon: Zap },
+      { name: "JavaScript (ES6+)", level: 95, icon: Code },
+      { name: "TypeScript", level: 85, icon: Code },
+      { name: "Tailwind CSS", level: 92, icon: Wind },
+      { name: "Redux Toolkit", level: 88, icon: Layers },
+      { name: "HTML5 / Semantic DOM", level: 95, icon: Layout },
+      { name: "Framer Motion", level: 86, icon: Sparkles },
     ],
   },
   {
     id: "backend",
-    label: "Backend",
+    label: "Backend & Realtime",
     icon: Server,
-    color: "#4a7c59",
+    color: "#0d9488",
     skills: [
-      { name: "Node.js", level: 88, icon: Cpu },
-      { name: "Express", level: 85, icon: Server },
-      { name: "MongoDB", level: 82, icon: Database },
-      { name: "PostgreSQL", level: 70, icon: Database },
-      { name: "Firebase", level: 78, icon: Flame },
+      { name: "Node.js", level: 92, icon: Cpu },
+      { name: "Bun", level: 85, icon: Zap },
+      { name: "Express.js", level: 90, icon: Server },
+      { name: "FastAPI & Python", level: 84, icon: Cpu },
+      { name: "Socket.io", level: 88, icon: Radio },
+      { name: "BullMQ Job Queues", level: 87, icon: Workflow },
+      { name: "RESTful API Design", level: 94, icon: Network },
     ],
   },
   {
-    id: "tools",
-    label: "Tools & DevOps",
-    icon: Wrench,
-    color: "#5a6acf",
+    id: "devops",
+    label: "Databases & Cloud",
+    icon: Cloud,
+    color: "#7c3aed",
     skills: [
-      { name: "Git", level: 88, icon: GitBranch },
-      { name: "Docker", level: 65, icon: Box },
-      { name: "VS Code", level: 92, icon: Monitor },
-      { name: "GCP", level: 75, icon: Cloud },
-      { name: "Linux", level: 70, icon: Terminal },
+      { name: "MongoDB Atlas Vector Search", level: 90, icon: Database },
+      { name: "PostgreSQL & MySQL", level: 82, icon: Database },
+      { name: "Redis", level: 88, icon: Database },
+      { name: "AWS (EC2)", level: 84, icon: Cloud },
+      { name: "Google Cloud (GCP)", level: 80, icon: Cloud },
+      { name: "Docker", level: 82, icon: Box },
+      { name: "Nginx & Linux VPS", level: 85, icon: Terminal },
+      { name: "Git, GitHub & Vercel", level: 94, icon: GitBranch },
+      { name: "n8n Automation", level: 80, icon: Workflow },
     ],
   },
 ];
@@ -79,7 +108,6 @@ const ConstellationDots = () => {
     { x: "5%", y: "50%", size: 2.5, delay: 1.2 },
     { x: "30%", y: "92%", size: 2, delay: 0.3 },
     { x: "70%", y: "92%", size: 3, delay: 1.8 },
-    { x: "95%", y: "40%", size: 2, delay: 0.6 },
   ];
 
   return (
@@ -87,7 +115,7 @@ const ConstellationDots = () => {
       {dots.map((dot, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full"
+          className="absolute rounded-full pointer-events-none"
           style={{
             left: dot.x,
             top: dot.y,
@@ -97,7 +125,7 @@ const ConstellationDots = () => {
           }}
           animate={{
             opacity: [0.15, 0.45, 0.15],
-            scale: [1, 1.5, 1],
+            scale: [1, 1.4, 1],
           }}
           transition={{
             duration: 4,
@@ -114,10 +142,10 @@ const ConstellationDots = () => {
 /* ─────── Marquee Ribbon ─────── */
 const MarqueeRibbon = () => {
   const allSkills = skillCategories.flatMap((c) => c.skills);
-  const ribbonItems = [...allSkills, ...allSkills]; // duplicate for seamless loop
+  const ribbonItems = [...allSkills, ...allSkills];
 
   return (
-    <div className="relative w-full overflow-hidden py-6 my-12">
+    <div className="relative w-full overflow-hidden py-6 my-10">
       {/* Gradient fade edges */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
@@ -138,16 +166,16 @@ const MarqueeRibbon = () => {
           return (
             <div
               key={i}
-              className="flex items-center gap-3 flex-shrink-0 opacity-40 hover:opacity-100 transition-opacity duration-300"
+              className="flex items-center gap-2.5 flex-shrink-0 opacity-45 hover:opacity-100 transition-opacity duration-300"
             >
-              <IconComponent size={18} strokeWidth={2} style={{ color: "#4a4a4a" }} />
+              <IconComponent size={16} strokeWidth={2} style={{ color: "#d4772c" }} />
               <span
                 style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontSize: "13px",
                   fontWeight: 500,
-                  color: "#4a4a4a",
-                  letterSpacing: "0.03em",
+                  color: "#333",
+                  letterSpacing: "0.02em",
                 }}
               >
                 {skill.name}
@@ -164,64 +192,59 @@ const MarqueeRibbon = () => {
 const SkillCard = ({ skill, categoryColor, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
   const IconComponent = skill.icon;
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
+      transition={{ duration: 0.4, delay: index * 0.04 }}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className="relative flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-500 cursor-default"
+        className="relative flex items-center gap-3.5 px-4 py-3 rounded-2xl transition-all duration-300 cursor-default"
         style={{
-          backgroundColor: isHovered ? "#ffffff" : "transparent",
+          backgroundColor: isHovered ? "#ffffff" : "rgba(255, 255, 255, 0.4)",
           boxShadow: isHovered
-            ? "0 8px 32px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04)"
+            ? "0 6px 20px rgba(0,0,0,0.05)"
             : "none",
-          border: `1px solid ${isHovered ? "#e0dbd1" : "transparent"}`,
+          border: `1px solid ${isHovered ? "#e0dbd1" : "rgba(224, 219, 209, 0.5)"}`,
         }}
       >
         {/* Icon */}
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-500"
+          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors duration-300"
           style={{
-            backgroundColor: isHovered
-              ? `${categoryColor}12`
-              : "#e0dbd1",
+            backgroundColor: isHovered ? `${categoryColor}15` : "#e8e2d5",
           }}
         >
           <IconComponent
-            size={20}
-            strokeWidth={2.5}
+            size={18}
+            strokeWidth={2.2}
             style={{
-              color: isHovered ? categoryColor : "#888",
-              transition: "color 0.3s ease",
+              color: isHovered ? categoryColor : "#666",
             }}
           />
         </div>
 
         {/* Name + Level */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center justify-between mb-1.5">
+          <div className="flex items-center justify-between mb-1">
             <span
               style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: "13.5px",
+                fontSize: "13px",
                 fontWeight: 600,
                 color: "#1a1a1a",
               }}
             >
               {skill.name}
             </span>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
+            <span
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "11px",
@@ -230,45 +253,29 @@ const SkillCard = ({ skill, categoryColor, index }) => {
               }}
             >
               {skill.level}%
-            </motion.span>
+            </span>
           </div>
 
           {/* Progress bar */}
           <div
             className="h-[3px] rounded-full overflow-hidden"
-            style={{ backgroundColor: "#e0dbd1" }}
+            style={{ backgroundColor: "#e2dcce" }}
           >
             <motion.div
               className="h-full rounded-full"
               initial={{ width: 0 }}
               animate={isInView ? { width: `${skill.level}%` } : {}}
               transition={{
-                duration: 1.2,
-                delay: index * 0.06 + 0.3,
+                duration: 1,
+                delay: index * 0.04 + 0.2,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               style={{
-                backgroundColor: isHovered ? categoryColor : "#bbb",
-                transition: "background-color 0.4s ease",
+                backgroundColor: categoryColor,
               }}
             />
           </div>
         </div>
-
-        {/* Hover glow */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div
-              className="absolute -inset-px rounded-2xl pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              style={{
-                background: `radial-gradient(200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${categoryColor}08, transparent 60%)`,
-              }}
-            />
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
@@ -283,47 +290,44 @@ const CategoryPanel = ({ category, isActive, onClick, index }) => {
   return (
     <motion.button
       ref={ref}
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: -15 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.08 }}
       onClick={onClick}
-      className="group flex items-center gap-4 w-full text-left px-6 py-5 rounded-2xl transition-all duration-500 cursor-pointer relative overflow-hidden"
+      className="group flex items-center gap-3.5 w-full text-left px-5 py-4 rounded-2xl transition-all duration-300 cursor-pointer relative overflow-hidden"
       style={{
         backgroundColor: isActive ? "#ffffff" : "transparent",
         border: `1px solid ${isActive ? "#e0dbd1" : "transparent"}`,
-        boxShadow: isActive
-          ? "0 4px 20px rgba(0,0,0,0.04)"
-          : "none",
+        boxShadow: isActive ? "0 4px 20px rgba(0,0,0,0.04)" : "none",
       }}
     >
-      {/* Active indicator line */}
+      {/* Active line */}
       {isActive && (
         <motion.div
-          layoutId="activeCategoryLine"
-          className="absolute left-0 top-[20%] bottom-[20%] w-[3px] rounded-r-full"
+          layoutId="activeCategoryPill"
+          className="absolute left-0 top-3 bottom-3 w-[3px] rounded-r-full"
           style={{ backgroundColor: category.color }}
           transition={{ type: "spring", stiffness: 400, damping: 30 }}
         />
       )}
 
       <div
-        className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
+        className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-300"
         style={{
-          backgroundColor: isActive ? `${category.color}10` : "#e8e3da",
-          color: isActive ? category.color : "#888",
+          backgroundColor: isActive ? `${category.color}15` : "#e8e2d5",
+          color: isActive ? category.color : "#666",
         }}
       >
-        <IconComponent size={20} strokeWidth={isActive ? 2.5 : 2} />
+        <IconComponent size={18} strokeWidth={isActive ? 2.5 : 2} />
       </div>
 
       <div className="flex flex-col">
         <span
           style={{
             fontFamily: "'DM Sans', sans-serif",
-            fontSize: "15px",
+            fontSize: "14px",
             fontWeight: isActive ? 700 : 500,
-            color: isActive ? "#1a1a1a" : "#888",
-            transition: "all 0.3s ease",
+            color: isActive ? "#1a1a1a" : "#777",
           }}
         >
           {category.label}
@@ -332,23 +336,18 @@ const CategoryPanel = ({ category, isActive, onClick, index }) => {
           style={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "11px",
-            fontWeight: 400,
-            color: "#bbb",
+            color: "#aaa",
           }}
         >
-          {category.skills.length} skills
+          {category.skills.length} competencies
         </span>
       </div>
 
-      {/* Skill count badge */}
       <div
-        className="ml-auto flex items-center justify-center w-7 h-7 rounded-full transition-all duration-300"
+        className="ml-auto flex items-center justify-center px-2 py-0.5 rounded-full text-[10px] font-bold"
         style={{
-          backgroundColor: isActive ? `${category.color}15` : "#e8e3da",
-          color: isActive ? category.color : "#aaa",
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: "11px",
-          fontWeight: 700,
+          backgroundColor: isActive ? `${category.color}15` : "#e8e2d5",
+          color: isActive ? category.color : "#888",
         }}
       >
         {category.skills.length}
@@ -359,14 +358,14 @@ const CategoryPanel = ({ category, isActive, onClick, index }) => {
 
 /* ─────── Main Skills Component ─────── */
 const Skills = forwardRef((props, ref) => {
-  const [activeCategory, setActiveCategory] = useState("frontend");
+  const [activeCategory, setActiveCategory] = useState("ai");
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  const activeData = skillCategories.find((c) => c.id === activeCategory);
+  const activeData =
+    skillCategories.find((c) => c.id === activeCategory) || skillCategories[0];
   const ActiveIcon = activeData.icon;
 
-  // Count total skills
   const totalSkills = skillCategories.reduce(
     (acc, c) => acc + c.skills.length,
     0
@@ -385,31 +384,21 @@ const Skills = forwardRef((props, ref) => {
     >
       <ConstellationDots />
 
-      <div className="max-w-[1150px] mx-auto px-6 relative z-10">
-        {/* ─── Section Header ─── */}
-        <div className="text-center mb-6">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-4">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
-            style={{
-              backgroundColor: "#e8e3da",
-              border: "1px solid #d8d3ca",
-            }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mb-5 bg-[#e8e2d5] border border-[#d8d0c0]"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4772c] animate-pulse" />
             <span
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: "11px",
-                fontWeight: 600,
-                color: "#888",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-              }}
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+              className="text-[11px] font-bold text-[#555] uppercase tracking-wider"
             >
-              {totalSkills}+ Technologies
+              {totalSkills}+ Production Tools & Technologies
             </span>
           </motion.div>
 
@@ -417,7 +406,7 @@ const Skills = forwardRef((props, ref) => {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[2.8rem] md:text-[3.5rem] font-normal leading-tight"
+            className="text-[2.8rem] md:text-[3.6rem] font-normal leading-tight"
           >
             <span
               style={{
@@ -444,25 +433,24 @@ const Skills = forwardRef((props, ref) => {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: "14px",
-              fontWeight: 400,
-              color: "#888",
+              fontSize: "15px",
+              color: "#777",
+              maxWidth: "500px",
+              margin: "12px auto 0",
               lineHeight: 1.7,
-              maxWidth: "460px",
-              margin: "16px auto 0",
             }}
           >
-            Technologies and tools I use to bring ideas to life — from
-            pixel-perfect interfaces to robust backend systems.
+            The specialized stack I use to build robust full-stack software,
+            intelligent AI agents, and high-concurrency systems.
           </motion.p>
         </div>
 
-        {/* ─── Marquee Ribbon ─── */}
+        {/* Marquee Ribbon */}
         <MarqueeRibbon />
 
-        {/* ─── Main Content: Side-by-Side Layout ─── */}
-        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 lg:gap-12">
-          {/* Left: Category Selector */}
+        {/* Side-by-Side Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-[290px_1fr] gap-8 lg:gap-12 mt-6">
+          {/* Left Category Selector */}
           <div className="flex flex-col gap-2">
             {skillCategories.map((category, i) => (
               <CategoryPanel
@@ -474,41 +462,32 @@ const Skills = forwardRef((props, ref) => {
               />
             ))}
 
-            {/* Decorative element */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.8 }}
-              className="mt-6 px-6"
-            >
-              <div
-                className="flex items-center gap-3"
+            <div className="mt-5 px-4 text-left">
+              <p
                 style={{
                   fontFamily: "'Caveat', cursive",
-                  fontSize: "16px",
-                  color: "#bbb",
+                  fontSize: "17px",
+                  color: "#888",
                 }}
               >
-                <Plus size={16} strokeWidth={2.5} style={{ color: "#d4772c", opacity: 0.5 }} />
-                Always learning more...
-              </div>
-            </motion.div>
+                Constantly expanding to modern AI APIs & architectures ⚡
+              </p>
+            </div>
           </div>
 
-          {/* Right: Skills Grid */}
+          {/* Right Skills Grid */}
           <div className="relative">
-            {/* Category title header */}
+            {/* Category header */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory}
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -10 }}
-                transition={{ duration: 0.3 }}
-                className="flex items-center gap-3 mb-6 pb-4"
-                style={{ borderBottom: "1px solid #e0dbd1" }}
+                transition={{ duration: 0.25 }}
+                className="flex items-center gap-3 mb-6 pb-3 border-b border-[#e0dbd1]"
               >
-                <ActiveIcon size={22} style={{ color: activeData.color }} />
+                <ActiveIcon size={20} style={{ color: activeData.color }} />
                 <span
                   style={{
                     fontFamily: "'DM Serif Display', serif",
@@ -519,21 +498,19 @@ const Skills = forwardRef((props, ref) => {
                   {activeData.label}
                 </span>
                 <div
-                  className="ml-auto px-3 py-1 rounded-full"
+                  className="ml-auto px-3 py-1 rounded-full text-xs font-semibold"
                   style={{
-                    backgroundColor: `${activeData.color}12`,
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "11px",
-                    fontWeight: 600,
+                    backgroundColor: `${activeData.color}15`,
                     color: activeData.color,
+                    fontFamily: "'DM Sans', sans-serif",
                   }}
                 >
-                  {activeData.skills.length} skills
+                  {activeData.skills.length} core tools
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* Skills list */}
+            {/* Skills grid */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeCategory}
@@ -541,7 +518,7 @@ const Skills = forwardRef((props, ref) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3"
               >
                 {activeData.skills.map((skill, i) => (
                   <SkillCard
@@ -553,39 +530,17 @@ const Skills = forwardRef((props, ref) => {
                 ))}
               </motion.div>
             </AnimatePresence>
-
-            {/* Bottom decorative line */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 1.2, delay: 0.6 }}
-              className="mt-8 h-px origin-left"
-              style={{
-                background:
-                  "linear-gradient(to right, #d4772c40, #e0dbd140, transparent)",
-              }}
-            />
           </div>
-        </div>
-
-        {/* Bottom Decorative Element */}
-        <div className="mt-20 flex justify-center">
-          <motion.div
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="w-1.5 h-1.5 rounded-full bg-[#1a1a1a]"
-          />
         </div>
       </div>
 
-      {/* ─── Marquee CSS Animation ─── */}
       <style>{`
         @keyframes marquee-scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
         .marquee-track {
-          animation: marquee-scroll 35s linear infinite;
+          animation: marquee-scroll 32s linear infinite;
         }
         .marquee-track:hover {
           animation-play-state: paused;

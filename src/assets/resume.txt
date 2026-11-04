@@ -1,0 +1,50 @@
+ABHISHEK MADOLIYA
+AI Full Stack Engineer 
+Badarpur, New Delhi 110044  |  +91 9310069214  |  abhishekmadoliya@gmail.com  |  LinkedIn  |  GitHub  |  Portfolio
+SUMMARY
+Full Stack Engineer with 1+ years of production experience building MERN and AI powered applications. Shipped three LLM products end to end: Cloudvyn (AI interview prep, 600+ registered candidates), TaxSolver (GST reconciliation with a RAG-based AI agent) and SketchLoop AI (prompt-to-code platform). Strong in Next.js, Node.js, FastAPI, LangChain, OpenAI API, vector search, real-time systems (WebRTC, Socket.io) and cloud deployment (AWS, GCP, Docker). 
+SKILLS
+AI / LLM: LangChain, OpenAI API, RAG, Vector Search, Multi-Agent Systems, Prompt Engineering, Stable Diffusion / FLUX 
+Frontend: React.js, Next.js, TypeScript, JavaScript, Redux Toolkit, Tailwind CSS 
+Backend: Node.js, Bun, Express.js, FastAPI, Python, REST APIs, Socket.io, WebRTC, BullMQ
+Databases: MongoDB, PostgreSQL, MySQL, Redis 
+DevOps / Cloud: Docker, AWS (EC2), GCP, Nginx, Linux, Git, GitHub, Vercel, n8n 
+EXPERIENCE
+Full Stack Developer | TechThaastu Pvt. Ltd. | Oct 2025 – Present 
+Built MERN applications with a reusable React and Tailwind CSS component library, improving page load performance by 20%.
+Designed REST APIs for authentication, user management and data processing; optimized MongoDB queries, cutting API response time by 25%.
+Shipped LLM-powered content generation and intelligent search using OpenAI and LangChain, saving 20 seconds of manual processing per request .
+Debugged production issues and delivered fixes through Git/GitHub and Agile sprints, improving system reliability .
+MERN Stack Developer Intern | GeeksforGeeks | Feb 2025 – May 2025 | [View Certificate]
+Built a full-featured MERN e-commerce application with JWT authentication, Redux/Context state management and third-partyAPI integrations .
+PROJECTS
+Cloudvyn | Founder & Lead Engineer | cloudvyn.com
+AI interview and group discussion prep platform for Indian freshers, with Hindi and English support .
+Architected and launched the platform solo, growing to 600+ registered candidates, 450+ completed AI interview sessions and 50+ multiplayerAI-agent GD simulations . 
+Built a real-time voice interview pipeline with WebRTC, Deepgram Nova-3 speech-to-text with voice activity detection for hands-free flow, and Cloudflare Workers AI text-to-speech.
+Designed a multi-agent GD simulator with distinct personas and urgency-scored turn taking, orchestrated over Socket.io.
+Implemented Razorpay subscriptions with entitlement middleware and BullMQ cron jobs for grace-period downgrades and free-tier resets.
+Deployed the Node/Express backend on AWS EC2; fixed a client-side rendering issue that blocked Google indexing and split the SSR Next.js marketing site from the React app. 
+Tech: Next.js, React, Node.js, Bun, FastAPI, LangChain, OpenAI API, WebRTC, Socket.io, MongoDB, BullMQ, AWS 
+
+TaxSolver | Founder & Developer | taxsolver.in 
+GST reconciliation SaaS for CA firms and small businesses. 
+Built a GSTR-2B reconciliation engine using O(n) Map-based matching with a Fuse.js fuzzy fallback and paise-normalized amounts 
+Developed a RAG pipeline over CBIC circulars using MongoDB Atlas Vector Search and Voyage AI embeddings, powering an AI agent with tools for GST rule search, GSTR-2B reconciliation and GSTIN verification. 
+Designed a multi-agent GD simulator with distinct personas and urgency-scored turn taking, orchestrated over Socket.io.
+Implemented Razorpay subscriptions with entitlement middleware and BullMQ cron jobs for grace-period downgrades and free-tier resets.
+Integrated the Sandbox.co.in GSP API to fetch GSTR-2B data, and published 10+ SEO articles on GST topics to drive organic traffic. 
+Tech: Node.js, MongoDB Atlas Vector Search, Voyage AI, Fuse.js, RAG 
+
+SketchLoop AI | Lead Developer | 2025 – Present | deving-plum.vercel.app 
+Prompt-to-design-to-code platform that turns a text idea into a deployable web app. 
+Architected an end-to-end pipeline converting natural-language prompts into UI designs and production-ready React and Node.js code 
+Built a LangChain prompt-refinement layer that turns vague input into structured design specs, improving generated output quality. 
+Integrated FLUX / Stable Diffusion for UI generation and built an LLM-powered engine that converts designs into component-based code. 
+Designed an asynchronous job architecture with Redis and BullMQ for long-running generation tasks; containerized with Docker and deployed on GCP 
+Tech: Next.js, React, Node.js, Redis, BullMQ, LangChain, Stable Diffusion, MongoDB, Docker, GCP 
+Open Source 
+Contributor to openCMS, part of a self-hosted open-source suite (openCRM, openCMS, openChat) built with the Open Collective Dev community: github.com/opencollective-dev/openCMS 
+
+EDUCATION & CERTIFICATIONS
+Bachelor of Computer Applications (BCA) | Indira Gandhi National Open University (IGNOU) | 2026 | CGPA: 7.13 

@@ -197,7 +197,7 @@ const KindWords = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 2.5px;
         }

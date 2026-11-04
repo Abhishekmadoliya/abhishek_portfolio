@@ -3,6 +3,54 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background-color: #f5f0e8;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar matching warm aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4cfc4;
+  border-radius: 9999px;
+  border: 2px solid #f5f0e8;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4772c;
+}
+
+/* Native CSS Scroll-Driven Progress Bar (Modern Web Guidance) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    @keyframes grow-progress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    #scroll-progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3px;
+      background: #d4772c;
+      transform-origin: 0 50%;
+      animation: grow-progress auto linear;
+      animation-timeline: scroll();
+      z-index: 100;
+    }
+  }
 }
 
 /* Float animation for decorative elements */
@@ -11,7 +59,7 @@ html {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   100% {
     transform: translateY(0px);
@@ -19,5 +67,15 @@ html {
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+  #scroll-progress {
+    display: none;
+  }
 }

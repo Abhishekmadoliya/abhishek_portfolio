@@ -1,118 +1,170 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 
-const Navbar = ({ onClick, onClickAbout, onClickContact, onClickSkills, onClickExperience }) => {
+const Navbar = ({
+  onClickProjects,
+  onClickServices,
+  onClickSkills,
+  onClickExperience,
+  onClickAbout,
+  onClickContact,
+  onClickResume,
+  activeSection = "about",
+}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // All nav items in exact order matching reference: Works About [LOGO] Gallery Resume↗
-  // Adapted: Projects About [AM] Contact Resume↗
-  const allItems = [
-    { label: "Projects", action: onClick, position: "left" },
-    { label: "Skills", action: onClickSkills, position: "left" },
-    { label: "Experience", action: onClickExperience, position: "left" },
-    { label: "About", action: onClickAbout, position: "right" },
-    { label: "Contact", action: onClickContact, position: "right" },
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 25) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const leftItems = [
+    { id: "projects", label: "Projects", action: onClickProjects },
+    { id: "services", label: "Services", action: onClickServices },
+    { id: "skills", label: "Toolkit", action: onClickSkills },
+    { id: "experience", label: "Journey", action: onClickExperience },
+  ];
+
+  const rightItems = [
+    { id: "about", label: "About", action: onClickAbout },
+    { id: "contact", label: "Contact", action: onClickContact },
     {
+      id: "resume",
       label: "Resume",
-      action: () =>
-        window.open(
-          "https://docs.google.com/document/d/1sh3prDiykcmYL0LLwXZNYbQcyoXgKeHi2umn5qfGJsA/edit?usp=sharing",
-          "_blank"
-        ),
-      position: "right",
+      action: onClickResume,
       hasArrow: true,
     },
   ];
 
-  const leftItems = allItems.filter((i) => i.position === "left");
-  const rightItems = allItems.filter((i) => i.position === "right");
+  const allItems = [...leftItems, ...rightItems];
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50"
-      style={{ backgroundColor: "#f5f0e8" }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#f5f0e8]/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.03)] border-b border-[#e0dbd1]/80 py-3.5"
+          : "bg-[#f5f0e8] py-5 md:py-6"
+      }`}
     >
-      {/* Desktop Nav — single centered row */}
-      <div className="hidden md:flex items-center justify-center py-6 gap-16 lg:gap-24">
-        {/* Left links */}
-        {leftItems.map((item, i) => (
-          <span
-            key={`l-${i}`}
-            onClick={item.action}
-            className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a]"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "15px",
-              fontWeight: 400,
-              color: "#4a4a4a",
-              letterSpacing: "0.02em",
-            }}
-          >
-            {item.label}
-          </span>
-        ))}
+      {/* Desktop Nav */}
+      <div className="max-w-[1240px] mx-auto px-6 hidden md:flex items-center justify-between">
+        {/* Left items */}
+        <div className="flex items-center gap-7 lg:gap-9">
+          {leftItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={item.action}
+                className="group relative py-1 cursor-pointer transition-colors duration-200 text-left"
+              >
+                <span
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: isActive ? 600 : 400,
+                    color: isActive ? "#1a1a1a" : "#555",
+                    letterSpacing: "0.02em",
+                  }}
+                  className="group-hover:text-[#d4772c] transition-colors"
+                >
+                  {item.label}
+                </span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#d4772c] rounded-full" />
+                )}
+              </button>
+            );
+          })}
+        </div>
 
-        {/* Center Logo: A (dark) M (orange) — matching JD style */}
-        <span
+        {/* Center Logo: ABHISHEK MADOLIYA */}
+        <button
           onClick={onClickAbout}
-          className="cursor-pointer select-none"
+          className="cursor-pointer select-none text-center group"
           style={{ lineHeight: 1 }}
         >
           <span
             style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "28px",
+              fontSize: "26px",
               fontWeight: 400,
               color: "#1a1a1a",
               fontStyle: "italic",
             }}
+            className="group-hover:opacity-85 transition-opacity"
           >
             ABHISHEK
           </span>
           <span
             style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "28px",
+              fontSize: "26px",
               fontWeight: 400,
               color: "#d4772c",
               fontStyle: "italic",
-              marginLeft: "2px",
+              marginLeft: "4px",
             }}
           >
             MADOLIYA
           </span>
-        </span>
+        </button>
 
-        {/* Right links */}
-        {rightItems.map((item, i) => (
-          <span
-            key={`r-${i}`}
-            onClick={item.action}
-            className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a] inline-flex items-center"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "15px",
-              fontWeight: 400,
-              color: "#4a4a4a",
-              letterSpacing: "0.02em",
-            }}
-          >
-            {item.label}
-            {item.hasArrow && (
-              <span style={{ marginLeft: "4px", fontSize: "13px" }}>↗</span>
-            )}
-          </span>
-        ))}
+        {/* Right items */}
+        <div className="flex items-center gap-7 lg:gap-9">
+          {rightItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={item.action}
+                className="group relative py-1 cursor-pointer transition-colors duration-200 inline-flex items-center"
+              >
+                <span
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "14px",
+                    fontWeight: isActive ? 600 : 400,
+                    color: isActive ? "#1a1a1a" : "#555",
+                    letterSpacing: "0.02em",
+                  }}
+                  className="group-hover:text-[#d4772c] transition-colors inline-flex items-center"
+                >
+                  {item.label}
+                  {item.hasArrow && (
+                    <ArrowUpRight
+                      size={14}
+                      className="ml-1 text-[#d4772c] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  )}
+                </span>
+                {isActive && !item.hasArrow && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#d4772c] rounded-full" />
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Mobile Nav */}
-      <div className="md:hidden flex items-center justify-between px-6 py-5">
-        {/* Mobile Logo */}
-        <span className="select-none" onClick={onClickAbout}>
+      {/* Mobile Nav Header */}
+      <div className="md:hidden flex items-center justify-between px-6">
+        <button
+          className="select-none text-left cursor-pointer"
+          onClick={onClickAbout}
+        >
           <span
             style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "24px",
+              fontSize: "22px",
               color: "#1a1a1a",
               fontStyle: "italic",
             }}
@@ -122,7 +174,7 @@ const Navbar = ({ onClick, onClickAbout, onClickContact, onClickSkills, onClickE
           <span
             style={{
               fontFamily: "'DM Serif Display', Georgia, serif",
-              fontSize: "24px",
+              fontSize: "22px",
               color: "#d4772c",
               fontStyle: "italic",
               marginLeft: "1px",
@@ -130,11 +182,22 @@ const Navbar = ({ onClick, onClickAbout, onClickContact, onClickSkills, onClickE
           >
             M
           </span>
-        </span>
+          <span
+            style={{
+              fontFamily: "'Caveat', cursive",
+              fontSize: "15px",
+              color: "#777",
+              marginLeft: "8px",
+            }}
+          >
+            Abhishek Madoliya
+          </span>
+        </button>
 
         <button
-          className="text-[#3a3a3a]"
+          className="p-2 text-[#1a1a1a] hover:text-[#d4772c] transition-colors cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Navigation Menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -142,34 +205,41 @@ const Navbar = ({ onClick, onClickAbout, onClickContact, onClickSkills, onClickE
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
-          }`}
-        style={{ backgroundColor: "#f5f0e8" }}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        } bg-[#f5f0e8] border-b border-[#e0dbd1] shadow-lg`}
       >
-        <div className="border-t border-[#e0dbd1]">
-          <ul className="flex flex-col items-center gap-5 py-7">
-            {allItems.map((item, i) => (
+        <ul className="flex flex-col items-center gap-4 py-6 px-6">
+          {allItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
               <li
-                key={i}
-                className="cursor-pointer transition-colors duration-200 hover:text-[#1a1a1a]"
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: "16px",
-                  color: "#4a4a4a",
-                }}
-                onClick={() => {
-                  setIsOpen(false);
-                  item.action?.();
-                }}
+                key={item.id}
+                className="w-full text-center"
               >
-                {item.label}
-                {item.hasArrow && (
-                  <span style={{ marginLeft: "4px", fontSize: "13px" }}>↗</span>
-                )}
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    item.action?.();
+                  }}
+                  className={`w-full py-2 text-base transition-colors duration-200 cursor-pointer ${
+                    isActive
+                      ? "text-[#d4772c] font-semibold"
+                      : "text-[#4a4a4a] hover:text-[#1a1a1a]"
+                  }`}
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  <span className="inline-flex items-center justify-center">
+                    {item.label}
+                    {item.hasArrow && (
+                      <ArrowUpRight size={14} className="ml-1 text-[#d4772c]" />
+                    )}
+                  </span>
+                </button>
               </li>
-            ))}
-          </ul>
-        </div>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
